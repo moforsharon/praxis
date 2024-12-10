@@ -106,7 +106,7 @@ async function createConnection() {
   return await mysql.createConnection({
     host: 'praxis-do-user-16095394-0.d.db.ondigitalocean.com',
     user: 'doadmin',
-    password: "AVNS_fEe6OQhsCRLZObvT2eK", // Keep this secure
+    password: 'AVNS_aBKf84x3JpreaoK9Bj4', // Keep this secure
     database: 'defaultdb',
     port: 25060,
     ssl: {
