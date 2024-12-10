@@ -3,14 +3,14 @@ import mysql from 'mysql2/promise'
 
 async function createConnection() {
   return await mysql.createConnection({
-    host: 'praxis-do-user-16095394-0.d.db.ondigitalocean.com',
-    user: 'doadmin',
-    password: 'root', // Keep this secure
-    database: 'defaultdb',
-    port: 25060,
-    ssl: {
-      rejectUnauthorized: false, // Use this setting for SSL enforcement
-    },
+    host: 'mysql-container',
+    user: 'root',
+    password: 'rootpassword', // Keep this secure
+    database: 'praxis',
+    port: 3306,
+    // ssl: {
+    //   rejectUnauthorized: false, // Use this setting for SSL enforcement
+    // },
   });
 }
 
