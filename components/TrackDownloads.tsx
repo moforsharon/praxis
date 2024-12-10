@@ -90,7 +90,7 @@ export function TrackDownloads() {
             <TableHead onClick={() => handleSort('praxisname1Namen')} className="cursor-pointer">Name</TableHead>
             <TableHead onClick={() => handleSort('straße')} className="cursor-pointer">Address</TableHead>
             <TableHead onClick={() => handleSort('stadt')} className="cursor-pointer">City</TableHead>
-            <TableHead onClick={() => handleSort('numberOfDownloads')} className="cursor-pointer">Downloads</TableHead>
+            <TableHead onClick={() => handleSort('numberOfDownloads')} className="cursor-pointer">Number of Scans</TableHead>
             <TableHead>Action</TableHead>
           </TableRow>
         </TableHeader>

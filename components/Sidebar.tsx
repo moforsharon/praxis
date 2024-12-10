@@ -32,7 +32,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
           onClick={() => setActiveTab('track')}
         >
           <BarChart2 className="mr-2" />
-          {!isCollapsed && 'Track Downloads'}
+          {!isCollapsed && 'Track QR-code Scans'}
         </Button>
       </nav>
     </div>
