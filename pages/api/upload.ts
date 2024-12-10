@@ -107,7 +107,7 @@ async function createConnection() {
     host: 'praxis-do-user-16095394-0.d.db.ondigitalocean.com',
     user: 'doadmin',
     password: "AVNS_fEe6OQhsCRLZObvT2eK", // Keep this secure
-    database: 'praxis',
+    database: 'defaultdb',
     port: 25060,
     ssl: {
       rejectUnauthorized: false, // Use this setting for SSL enforcement
