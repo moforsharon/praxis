@@ -104,7 +104,7 @@ const uploadDir = path.join(process.cwd(), 'public', 'qr-codes')
 
 async function createConnection() {
   return await mysql.createConnection({
-    host: 'mysql-container',
+    host: '161.35.31.233',
     user: 'root',
     password: 'rootpassword', // Keep this secure
     database: 'praxis',

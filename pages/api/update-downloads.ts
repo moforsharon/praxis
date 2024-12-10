@@ -76,7 +76,7 @@ function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: (req: Next
 
 async function createConnection() {
   return await mysql.createConnection({
-    host: 'mysql-container',
+    host: '161.35.31.233',
     user: 'root',
     password: 'rootpassword', // Keep this secure
     database: 'praxis',
