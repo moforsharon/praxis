@@ -102,16 +102,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   // Decrypt the code
-  const decodedCode = decodeURIComponent(code);
+  // const decodedCode = decodeURIComponent(code);
   // const decryptedCode = AES.decrypt(decodedCode, process.env.ENCRYPTION_SECRET).toString(Utf8);
-  console.log(`\n\n\n\n\n${decodedCode}\n\n\n\n`);
+  // console.log(`\n\n\n\n\n${decodedCode}\n\n\n\n`);
 
   try {
     const connection = await createConnection();
 
     await connection.execute(
-      'UPDATE pediatricians SET numberOfDownloads = numberOfDownloads + 1 WHERE encryptedCode = ?',
-      [decodedCode],
+      'UPDATE pediatricians SET numberOfDownloads = numberOfDownloads + 1 WHERE code = ?',
+      [code],
     );
 
     await connection.end();

@@ -159,15 +159,15 @@ throw new Error('stringCode must be a valid string');
 }
 
 // @ts-ignore
-const encryptedCode = AES.encrypt(stringCode, process.env.ENCRYPTION_SECRET).toString();
-const sanitizedCode = slugify(encryptedCode);
-const qrCodePath = `/qr-codes/${sanitizedCode}.png`
-await QRCode.toFile(path.join(uploadDir, `${sanitizedCode}.png`), `https://feverapp.info/?code=${encryptedCode}`)
+// const encryptedCode = AES.encrypt(stringCode, process.env.ENCRYPTION_SECRET).toString();
+// const sanitizedCode = slugify(encryptedCode);
+const qrCodePath = `/qr-codes/${Code}.png`
+await QRCode.toFile(path.join(uploadDir, `${Code}.png`), `https://feverapp.info/?code=${Code}`)
 
 
 await connection.execute(
 'INSERT INTO pediatricians (code, praxisname1Namen, straße, plz, stadt, pathToPediatricianQRCodeImage, numberOfDownloads, encryptedCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-[Code, praxisname1Namen, straße, plz, stadt, qrCodePath, 0, encryptedCode]
+[Code, praxisname1Namen, straße, plz, stadt, qrCodePath, 0, Code]
 )
 }
 
