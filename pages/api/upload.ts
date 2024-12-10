@@ -100,7 +100,9 @@ bodyParser: false,
 },
 }
 
-const uploadDir = path.join(process.cwd(), 'public', 'qr-codes')
+const uploadDir = path.join('/tmp', 'qr-codes');
+await fs.mkdir(uploadDir, { recursive: true }); // Ensure the directory exists
+
 
 async function createConnection() {
   return await mysql.createConnection({
