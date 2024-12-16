@@ -11,7 +11,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   return (
-    <div className={`bg-[#242873] text-white transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-[28%]'}`}>
+    <div className={`bg-[#242873] text-white transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-[24%]'}`}>
       <div className="flex justify-end p-4">
         <Button variant="ghost" size="icon" onClick={() => setIsCollapsed(!isCollapsed)}>
           {isCollapsed ? <ChevronRight /> : <ChevronLeft />}

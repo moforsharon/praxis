@@ -156,7 +156,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const connection = await createConnection();
     console.log('\n\nDatabase connection established\n\n\n');
 
-    for (const row of data.slice(0, 10)) {
+    for (const row of data) {
       const {
         Code,
         'Praxisname 1 - Namen': praxisname1Namen,
@@ -171,13 +171,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       // Generate QR code
       const stringCode = Code.toString();
+      console.log(`String code: ${stringCode}`)
       const tempFilePath = path.join('/tmp', `${stringCode}.png`);
       await QRCode.toFile(tempFilePath, `https://feverapp.info/?code=${stringCode}`);
-
+      // Get current date and time
+      const currentTime = new Date();
+      const dateString = currentTime.toISOString().replace(/:/g, '-').replace('T', '_').split('.')[0];
       // Upload to Supabase Storage
       const { data: uploadData, error: uploadError } = await supabase.storage
         .from('qr-codes') // Replace with your Supabase storage bucket name
-        .upload(`qr-codes/${stringCode}.png`, await fs.readFile(tempFilePath), {
+        .upload(`new-qr-code/${stringCode}.png`, await fs.readFile(tempFilePath), {
           contentType: 'image/png',
         });
 
@@ -188,7 +191,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Get public URL
       const { data: publicUrlData } = supabase.storage
         .from('qr-codes')
-        .getPublicUrl(`qr-codes/${stringCode}.png`);
+        .getPublicUrl(`new-qr-code/${stringCode}.png`);
       const qrCodeUrl = publicUrlData?.publicUrl;
 
       // Update MySQL database

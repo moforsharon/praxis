@@ -97,7 +97,8 @@ export function TrackDownloads() {
         <TableBody>
           {sortedAndFilteredPediatricians.map((pediatrician) => (
             <TableRow key={pediatrician.code}>
-              <TableCell>{pediatrician.code}</TableCell>
+              {/* <TableCell>{pediatrician.code}</TableCell> */}
+              <TableCell>{pediatrician.code.toString().padStart(4, '0')}</TableCell>
               <TableCell>{pediatrician.praxisname1Namen}</TableCell>
               <TableCell>{`${pediatrician.straße}, ${pediatrician.plz}`}</TableCell>
               <TableCell>{pediatrician.stadt}</TableCell>
