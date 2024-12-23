@@ -6,6 +6,9 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata = {
   title: 'Pediatrician Dashboard',
   description: 'Upload and manage pediatrician data',
+  icons: {
+    icon: '/fever_app_logo.ico',
+  },
 }
 
 export default function RootLayout({
@@ -19,4 +22,3 @@ export default function RootLayout({
     </html>
   )
 }
-

@@ -156,7 +156,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const connection = await createConnection();
     console.log('\n\nDatabase connection established\n\n\n');
 
-    for (const row of data) {
+    for (const row of data.slice(1213)) {
       const {
         Code,
         'Praxisname 1 - Namen': praxisname1Namen,
@@ -180,7 +180,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Upload to Supabase Storage
       const { data: uploadData, error: uploadError } = await supabase.storage
         .from('qr-codes') // Replace with your Supabase storage bucket name
-        .upload(`new-qr-code/${stringCode}.png`, await fs.readFile(tempFilePath), {
+        .upload(`updated-firs-half-codes/${stringCode}.png`, await fs.readFile(tempFilePath), {
           contentType: 'image/png',
         });
 
@@ -191,7 +191,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Get public URL
       const { data: publicUrlData } = supabase.storage
         .from('qr-codes')
-        .getPublicUrl(`new-qr-code/${stringCode}.png`);
+        .getPublicUrl(`updated-firs-half-codes/${stringCode}.png`);
       const qrCodeUrl = publicUrlData?.publicUrl;
 
       // Update MySQL database
