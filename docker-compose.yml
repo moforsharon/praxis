@@ -1,33 +1,15 @@
-version: '3.8'
+version: '3.9'
 
 services:
-  app:
-    build: .
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     environment:
-      - DB_HOST=mysql-container
-      - DB_USER=root
-      - DB_PASSWORD=rootpassword
-      - DB_NAME=praxis
-      - DB_PORT=3306
-      - ENCRYPTION_SECRET=G5VrPm8T7sD3F4Hj5K6L7M8N9B1VcG5VrPm8T7sD3F4
+      NODE_ENV: production
     volumes:
-      - .:/usr/src/app
-    depends_on:
-      - mysql-container
-
-  mysql-container:
-    image: mysql:8.0
-    container_name: mysql-container
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: praxis
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-
-volumes:
-  mysql_data:
+      - .:/app
+      - /app/node_modules
+    command: "npm run start"

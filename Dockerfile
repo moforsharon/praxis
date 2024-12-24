@@ -1,23 +1,23 @@
-# Use Node.js LTS image
-FROM node:18
+# Use the official Node.js image as the base image
+FROM node:18-alpine
 
-# Set working directory
-WORKDIR /usr/src/app
+# Set the working directory in the container
+WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy package.json and package-lock.json files
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install --legacy-peer-deps
 
-# Copy the rest of the application code
+# Copy the rest of the application
 COPY . .
 
-# Build the Next.js app
+# Build the Next.js application
 RUN npm run build
 
-# Expose the port for the app
+# Expose port 3000
 EXPOSE 3000
 
-# Start the app in production mode
-CMD ["npm", "run", "start"]
+# Start the Next.js application
+CMD ["npm", "start"]
