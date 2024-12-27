@@ -23,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const connection = await createConnection()
 
     const [rows] = await connection.execute(
-      'SELECT code, praxisname1Namen, straße, plz, stadt, pathToPediatricianQRCodeImage, numberOfDownloads FROM pediatricians'
+      'SELECT code, praxisname1Namen, straße, plz, stadt, pathToPediatricianQRCodeImage, numberOfPageVisits, numberOfAndroidDownloads, numberOfIosDownloads FROM pediatricians'
     )
 
     await connection.end()

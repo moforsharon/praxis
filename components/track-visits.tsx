@@ -16,13 +16,15 @@ interface Pediatrician {
   plz: string
   stadt: string
   pathToPediatricianQRCodeImage: string
-  numberOfDownloads: number
+  numberOfPageVisits: number,
+  numberOfAndroidDownloads: number,
+  numberOfIosDownloads: number
 }
 
 export function TrackVisits() {
   const [pediatricians, setPediatricians] = useState<Pediatrician[]>([])
   const [isLoading, setIsLoading] = useState(true)
-  const [sortBy, setSortBy] = useState<keyof Pediatrician>('numberOfDownloads')
+  const [sortBy, setSortBy] = useState<keyof Pediatrician>('numberOfPageVisits')
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc')
   const [filter, setFilter] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
@@ -110,7 +112,10 @@ export function TrackVisits() {
               <TableHead onClick={() => handleSort('praxisname1Namen')} className="cursor-pointer hover:text-[#253771]">Name</TableHead>
               <TableHead onClick={() => handleSort('straße')} className="cursor-pointer hover:text-[#253771]">Address</TableHead>
               <TableHead onClick={() => handleSort('stadt')} className="cursor-pointer hover:text-[#253771]">City</TableHead>
-              <TableHead onClick={() => handleSort('numberOfDownloads')} className="cursor-pointer hover:text-[#253771]">Visits</TableHead>
+              <TableHead onClick={() => handleSort('numberOfPageVisits')} className="cursor-pointer hover:text-[#253771]">Visits</TableHead>
+              <TableHead onClick={() => handleSort('numberOfAndroidDownloads')} className="cursor-pointer hover:text-[#253771]">Android downloads</TableHead>
+              <TableHead onClick={() => handleSort('numberOfIosDownloads')} className="cursor-pointer hover:text-[#253771]">IOS Downloads</TableHead>
+
               {/* <TableHead>Action</TableHead> */}
             </TableRow>
           </TableHeader>
@@ -122,7 +127,13 @@ export function TrackVisits() {
                 <TableCell>{`${pediatrician.straße}, ${pediatrician.plz}`}</TableCell>
                 <TableCell>{pediatrician.stadt}</TableCell>
                 <TableCell className="font-semibold text-[#253771]">
-                  {pediatrician.numberOfDownloads}
+                  {pediatrician.numberOfPageVisits}
+                </TableCell>
+                <TableCell className="font-semibold text-[#253771]">
+                  {pediatrician.numberOfAndroidDownloads}
+                </TableCell>
+                <TableCell className="font-semibold text-[#253771]">
+                  {pediatrician.numberOfIosDownloads}
                 </TableCell>
                 {/* <TableCell>
                   <Dialog>

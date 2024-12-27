@@ -196,7 +196,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       // Update MySQL database
       await connection.execute(
-        'INSERT INTO pediatricians (code, praxisname1Namen, straße, plz, stadt, pathToPediatricianQRCodeImage, numberOfDownloads, encryptedCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+        'INSERT INTO pediatricians (code, praxisname1Namen, straße, plz, stadt, pathToPediatricianQRCodeImage, numberOfPageVisits, encryptedCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
         [Code, praxisname1Namen, straße, plz, stadt, qrCodeUrl, 0, Code]
       );
 

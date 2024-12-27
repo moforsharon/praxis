@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card"
 
 interface StatCardProps {
   title: string
-  value: any
+  value: number
   delay: number
 }
 
@@ -77,8 +77,8 @@ export function Statistics() {
 
       const chartData = {
         downloads: [
-          { name: 'With practice Code', value: 5 },
-          { name: 'Without practice code', value: 3},
+          { name: 'With practice Code', value: (parseInt(statistics.totalAndroidDownloadWithCode) + parseInt(statistics.totalIosDownloadWithCode)) },
+          { name: 'Without practice code', value: (parseInt(statistics.totalAndroidDownloadWithoutCode) + parseInt(statistics.totalIosDownloadWithoutCode))},
         ],
         pageVisits: [
           { name: 'With practice Code', value: statistics.totalPageVisitsWithCode
@@ -86,7 +86,7 @@ export function Statistics() {
           { name: 'Without practice code', value: statistics.totalPageVisitsWithoutCode },
         ],
       }
-
+      var totalDownloads = parseInt(statistics.totalAndroidDownload) + parseInt(statistics.totalIosDownloads);
 
   return (
     <div className="space-y-8">
@@ -100,7 +100,7 @@ export function Statistics() {
         <StatCard title="Total practices" value={statistics.totalPediatricians} delay={0} />
         {/* <StatCard title="Total QR-Code scans" value={30} delay={0.1} /> */}
         <StatCard title="Total page visits" value={statistics.totalPageVisits} delay={0.2} />
-        <StatCard title="Total downloads" value={8} delay={0.3} />
+        <StatCard title="Total downloads" value={totalDownloads} delay={0.3} />
       </motion.div>
 
       {/* Charts */}
