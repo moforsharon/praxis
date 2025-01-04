@@ -27,8 +27,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - praxis_mysql_data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
 
 volumes:
-  praxis_mysql_data:
-    external: true
+  mysql_data:
