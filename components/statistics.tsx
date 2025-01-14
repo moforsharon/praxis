@@ -106,6 +106,37 @@ export function Statistics() {
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="bg-white p-6 rounded-lg border border-[#B6BBE0]"
+        >
+          <h3 className="text-lg font-semibold text-[#253771] mb-4">Page visits</h3>
+          <div className="h-[300px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={chartData.pageVisits}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#B6BBE0" />
+                <XAxis dataKey="name" stroke="#253771" />
+                <YAxis stroke="#253771" />
+                <Tooltip 
+                  contentStyle={{ 
+                    backgroundColor: '#fff',
+                    border: '1px solid #B6BBE0'
+                  }}
+                />
+                <Bar
+                  dataKey="value"
+                  fill="#253771"
+                  radius={[4, 4, 0, 0]}
+                  animationBegin={800}
+                  animationDuration={1000}
+                />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </motion.div>
+
+        <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
@@ -127,37 +158,6 @@ export function Statistics() {
                 <Bar
                   dataKey="value"
                   fill="#FC999E"
-                  radius={[4, 4, 0, 0]}
-                  animationBegin={800}
-                  animationDuration={1000}
-                />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-white p-6 rounded-lg border border-[#B6BBE0]"
-        >
-          <h3 className="text-lg font-semibold text-[#253771] mb-4">Landing page visits</h3>
-          <div className="h-[300px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={chartData.pageVisits}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#B6BBE0" />
-                <XAxis dataKey="name" stroke="#253771" />
-                <YAxis stroke="#253771" />
-                <Tooltip 
-                  contentStyle={{ 
-                    backgroundColor: '#fff',
-                    border: '1px solid #B6BBE0'
-                  }}
-                />
-                <Bar
-                  dataKey="value"
-                  fill="#253771"
                   radius={[4, 4, 0, 0]}
                   animationBegin={800}
                   animationDuration={1000}
