@@ -118,7 +118,7 @@ const supabase = createClient('https://uirqajedejyiwblszdha.supabase.co', 'eyJhb
 
 async function createConnection() {
   return await mysql.createConnection({
-    host: '161.35.31.233',
+    host: '209.74.89.164',
     user: 'root',
     password: 'rootpassword', // Keep this secure
     database: 'praxis',
